@@ -307,11 +307,11 @@ module CamperVan
         when "Paste"
           lines = message.body.split(/\n|\r\n|\r/)
 
-          lines[0..2].each do |line|
+          lines[0..100].each do |line|
             client.campfire_reply :privmsg, name, channel, ":> " + line
           end
 
-          if lines.size > 3
+          if lines.size > 100
             client.campfire_reply :privmsg, name, channel, ":> more: " +
               "https://#{client.subdomain}.campfirenow.com/room/#{room.id}/paste/#{message.id}"
           end
